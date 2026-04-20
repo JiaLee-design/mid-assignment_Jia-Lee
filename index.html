@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2022004684 이지아 - 모바일 앱 소개 페이지</title>
+  <style>
+    :root {
+      --primary: #5b6cff;
+      --primary-dark: #4254ee;
+      --secondary: #eef1ff;
+      --bg: #f8faff;
+      --card: #ffffff;
+      --text: #1f2533;
+      --subtext: #5f6b7a;
+      --line: #e3e8f2;
+      --shadow: 0 12px 30px rgba(48, 68, 130, 0.10);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      background: linear-gradient(180deg, #f5f8ff 0%, #ffffff 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(227, 232, 242, 0.8);
+    }
+
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-menu a {
+      color: var(--subtext);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary-dark);
+    }
+
+    .hero {
+      padding: 62px 0 38px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-text .badge {
+      display: inline-block;
+      background: var(--secondary);
+      color: var(--primary-dark);
+      border: 1px solid #d8e0ff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero-text h1 {
+      font-size: 2.9rem;
+      line-height: 1.18;
+      margin-bottom: 16px;
+    }
+
+    .hero-text p {
+      color: var(--subtext);
+      font-size: 1.05rem;
+      max-width: 620px;
+      margin-bottom: 22px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 0.98rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 10px 24px rgba(91, 108, 255, 0.24);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: white;
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: #f7f9ff;
+    }
+
+    .phone-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .phone {
+      width: 300px;
+      background: #111827;
+      border-radius: 36px;
+      padding: 14px;
+      box-shadow: 0 24px 50px rgba(20, 30, 80, 0.22);
+    }
+
+    .screen {
+      background: linear-gradient(180deg, #ffffff 0%, #f3f6ff 100%);
+      border-radius: 28px;
+      padding: 20px 16px;
+      min-height: 580px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .screen-top {
+      width: 90px;
+      height: 8px;
+      background: #d0d8eb;
+      border-radius: 999px;
+      margin: 0 auto 18px;
+    }
+
+    .app-card {
+      background: white;
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid #edf1f8;
+      margin-bottom: 14px;
+    }
+
+    .mini-title {
+      font-size: 0.88rem;
+      color: var(--subtext);
+      margin-bottom: 8px;
+    }
+
+    .app-main-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--primary-dark);
+    }
+
+    .progress {
+      background: #edf1fa;
+      border-radius: 999px;
+      height: 10px;
+      overflow: hidden;
+      margin: 10px 0 6px;
+    }
+
+    .progress-bar {
+      width: 72%;
+      height: 100%;
+      background: linear-gradient(90deg, #5b6cff 0%, #7f8dff 100%);
+      border-radius: 999px;
+    }
+
+    .screen-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    section {
+      padding: 28px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .section-head p {
+      color: var(--subtext);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      font-size: 1.16rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--subtext);
+      font-size: 0.98rem;
+    }
+
+    .icon-box {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #e9eeff 0%, #f6f8ff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 14px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .feature-list li {
+      border-bottom: 1px solid #eef2f7;
+      padding: 10px 0;
+      color: var(--subtext);
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .shot {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+    }
+
+    .review {
+      background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+    }
+
+    .review strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .stat-box {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-box h3 {
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .stat-box p {
+      color: var(--subtext);
+      font-size: 0.95rem;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: 14px;
+      border: 1px solid #cfd8e7;
+      font-size: 0.98rem;
+      outline: none;
+      transition: 0.2s ease;
+      background: white;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(91, 108, 255, 0.12);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .result-box {
+      display: none;
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 16px;
+      background: #f3f6ff;
+      border: 1px dashed #b9c7ff;
+      color: #3145ba;
+      font-size: 0.96rem;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 28px 0 50px;
+      text-align: center;
+      color: var(--subtext);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 940px) {
+      .hero-grid,
+      .grid-3,
+      .grid-2,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+
+      .phone {
+        width: 100%;
+        max-width: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-wrap">
+      <div class="logo">CampusMate</div>
+      <nav class="nav-menu">
+        <a href="#about">앱 소개</a>
+        <a href="#features">주요 기능</a>
+        <a href="#screens">앱 화면</a>
+        <a href="#reviews">이용 후기</a>
+        <a href="#apply">사전 신청</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="about">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="badge">쉽게배우는모바일앱개발 · 개인 결과물</div>
+          <h1>대학생을 위한<br>올인원 캠퍼스 앱, CampusMate</h1>
+          <p>
+            CampusMate는 시간표 관리, 과제 정리, 팀플 일정 공유, 캠퍼스 공지 확인을
+            한 번에 할 수 있는 모바일 앱입니다. 이 페이지는 HTML, CSS, JavaScript를
+            활용해 제작한 앱 소개 웹페이지입니다.
+          </p>
+          <div class="btn-group">
+            <a href="#apply" class="btn btn-primary">사전 신청하기</a>
+            <a href="#features" class="btn btn-secondary">기능 살펴보기</a>
+          </div>
+        </div>
+
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="screen">
+              <div class="screen-top"></div>
+
+              <div class="app-card">
+                <div class="mini-title">오늘의 할 일</div>
+                <div class="app-main-title">과제 제출 D-3</div>
+                <p style="color:#5f6b7a; font-size:0.92rem;">웹페이지 수정 후 URL 제출하기</p>
+                <div class="progress">
+                  <div class="progress-bar"></div>
+                </div>
+                <p style="font-size:0.9rem; color:#5f6b7a;">진행률 72%</p>
+              </div>
+
+              <div class="screen-grid">
+                <div class="app-card">
+                  <div class="mini-title">시간표</div>
+                  <strong>오늘 3과목</strong>
+                </div>
+                <div class="app-card">
+                  <div class="mini-title">공지</div>
+                  <strong>2건 확인</strong>
+                </div>
+              </div>
+
+              <div class="app-card" style="margin-top:10px;">
+                <div class="mini-title">팀 프로젝트</div>
+                <strong>회의 일정 공유 완료</strong>
+                <p style="font-size:0.9rem; color:#5f6b7a; margin-top:6px;">팀원들과 일정, 파일, 할 일을 한 번에 관리</p>
+              </div>
+
+              <div class="app-card">
+                <div class="mini-title">캠퍼스 맵</div>
+                <strong>빈 강의실 찾기 기능 제공</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="section-head">
+        <h2>주요 기능</h2>
+        <p>모바일 앱 서비스 소개 형식으로 구성한 기능 설명 영역입니다.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon-box">📅</div>
+          <h3>스마트 시간표 관리</h3>
+          <p>
+            수업 시간표를 한눈에 확인하고, 강의실과 과제 일정을 함께 관리할 수 있습니다.
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon-box">✅</div>
+          <h3>과제/할 일 체크</h3>
+          <p>
+            해야 할 일을 정리하고 마감 기한을 관리하여 학업 계획을 더 효율적으로 세울 수 있습니다.
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon-box">👥</div>
+          <h3>팀플 일정 공유</h3>
+          <p>
+            팀원과 회의 시간, 역할 분담, 공용 메모를 쉽게 공유할 수 있도록 설계했습니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:18px;">
+        <div class="card">
+          <div class="icon-box">📢</div>
+          <h3>공지 모아보기</h3>
+          <p>
+            여러 수업과 학교 공지를 한곳에 모아서 확인할 수 있는 기능을 제공합니다.
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon-box">🗺️</div>
+          <h3>캠퍼스 생활 지원</h3>
+          <p>
+            강의실 위치, 편의시설, 빈 강의실 정보 등 학교 생활에 필요한 정보를 제공합니다.
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon-box">📱</div>
+          <h3>직관적인 UI</h3>
+          <p>
+            누구나 쉽게 사용할 수 있도록 간단한 메뉴 구조와 깔끔한 화면 구성을 목표로 했습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="screens">
+      <div class="section-head">
+        <h2>앱 화면 미리보기</h2>
+        <p>이미지 요소를 활용해 앱 사용 장면을 소개하는 구간입니다.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <img class="shot" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="앱 화면 1">
+          <h3 style="margin-top:14px;">홈 화면</h3>
+          <p>오늘의 일정과 알림, 공지 요약을 바로 확인할 수 있습니다.</p>
+        </div>
+        <div class="card">
+          <img class="shot" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="앱 화면 2">
+          <h3 style="margin-top:14px;">과제 관리 화면</h3>
+          <p>마감 기한, 우선순위, 진행 상태를 직관적으로 정리할 수 있습니다.</p>
+        </div>
+        <div class="card">
+          <img class="shot" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="앱 화면 3">
+          <h3 style="margin-top:14px;">팀플 협업 화면</h3>
+          <p>팀원과 일정, 역할, 아이디어를 간편하게 공유하는 기능을 담았습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>왜 필요한 앱인가?</h2>
+        <p>텍스트, 카드 레이아웃, 목록 구성을 활용한 설명 영역입니다.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>기획 의도</h3>
+          <p>
+            대학생들은 시간표, 과제, 공지, 팀플 일정이 여러 플랫폼에 흩어져 있어 불편함을 겪습니다.
+            CampusMate는 이를 하나로 모아 캠퍼스 생활을 더 편리하게 만들기 위해 기획한 앱입니다.
+          </p>
+          <ul class="feature-list">
+            <li>학교 생활 정보를 한곳에 통합</li>
+            <li>과제와 일정 관리 효율 향상</li>
+            <li>팀 프로젝트 협업 편의성 강화</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>기대 효과</h3>
+          <p>
+            사용자는 해야 할 일을 놓치지 않고, 필요한 정보를 더 빠르게 찾으며,
+            팀 프로젝트 진행 과정도 더욱 체계적으로 관리할 수 있습니다.
+          </p>
+          <ul class="feature-list">
+            <li>마감 관리 스트레스 감소</li>
+            <li>공지 확인 누락 방지</li>
+            <li>협업 생산성 향상</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="section-head">
+        <h2>예상 이용 후기</h2>
+        <p>실제 앱 소개 페이지처럼 후기 카드와 수치를 구성했습니다.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card review">
+          <strong>“과제와 팀플 일정을 같이 관리할 수 있어서 편해요.”</strong>
+          <p>경영학과 3학년 학생이 사용한다고 가정한 후기입니다.</p>
+        </div>
+        <div class="card review">
+          <strong>“여러 수업 공지를 한 번에 볼 수 있어서 놓치는 일이 줄었어요.”</strong>
+          <p>공지 확인이 많은 학생에게 유용한 서비스라는 설정입니다.</p>
+        </div>
+        <div class="card review">
+          <strong>“시간표, 할 일, 공지까지 한 화면에서 보여서 직관적이에요.”</strong>
+          <p>앱 UI와 접근성을 강조하기 위한 예시 후기입니다.</p>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat-box">
+          <h3>4.8/5</h3>
+          <p>예상 사용자 만족도</p>
+        </div>
+        <div class="stat-box">
+          <h3>92%</h3>
+          <p>다시 사용할 의향</p>
+        </div>
+        <div class="stat-box">
+          <h3>1,200+</h3>
+          <p>가상 사전 관심 등록 수</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="apply">
+      <div class="section-head">
+        <h2>사전 신청 폼</h2>
+        <p>form, input, select, textarea, JavaScript 제출 기능을 반영했습니다.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <form id="applyForm">
+            <div>
+              <label for="name">이름</label>
+              <input type="text" id="name" placeholder="이름을 입력하세요" required>
+            </div>
+
+            <div>
+              <label for="email">이메일</label>
+              <input type="email" id="email" placeholder="example@email.com" required>
+            </div>
+
+            <div>
+              <label for="type">가장 관심 있는 기능</label>
+              <select id="type" required>
+                <option value="">선택하세요</option>
+                <option value="시간표 관리">시간표 관리</option>
+                <option value="과제 체크">과제 체크</option>
+                <option value="팀플 일정 공유">팀플 일정 공유</option>
+                <option value="공지 모아보기">공지 모아보기</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message">앱에 바라는 점</label>
+              <textarea id="message" placeholder="원하는 기능이나 의견을 적어주세요"></textarea>
+            </div>
+
+            <div class="btn-group">
+              <button type="submit" class="btn btn-primary">신청하기</button>
+              <button type="reset" class="btn btn-secondary">다시 작성</button>
+            </div>
+          </form>
+
+          <div id="resultBox" class="result-box"></div>
+        </div>
+
+        <div class="card">
+          <h3>폼 설명</h3>
+          <p>
+            사용자가 앱 사전 신청을 할 수 있도록 구성한 입력 영역입니다.
+            제출 버튼을 누르면 JavaScript가 입력값을 읽어 신청 완료 메시지를 화면에 보여줍니다.
+          </p>
+          <ul class="feature-list">
+            <li>필수 입력값 확인</li>
+            <li>신청 내용 화면 출력</li>
+            <li>alert 메시지 실행</li>
+            <li>수업 교안의 form + submit 흐름 반영</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    2022004684 이지아 · 쉽게배우는모바일앱개발 개인 과제 결과물
+  </footer>
+
+  <script>
+    const form = document.getElementById("applyForm");
+    const resultBox = document.getElementById("resultBox");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const type = document.getElementById("type").value;
+      const message = document.getElementById("message").value.trim();
+
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <strong>사전 신청이 완료되었습니다.</strong><br><br>
+        이름: ${name}<br>
+        이메일: ${email}<br>
+        관심 기능: ${type}<br>
+        앱에 바라는 점: ${message ? message : "입력 없음"}
+      `;
+
+      alert(name + "님의 사전 신청이 완료되었습니다.");
+    });
+  </script>
+</body>
+</html>
